@@ -1,0 +1,32 @@
+{
+  "name": "th3mouk/cms-page-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony CMSPageBundle extends of Sonata Project",
+  "keywords": [
+    "sonata", "cms", "page"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jérémy Marodon",
+      "email": "marodon.jeremy@gmail.com"
+    }
+  ],
+  "require": {
+    "th3mouk/cms-core-bundle": "~1.0.0",
+
+    "sonata-project/page-bundle": "~2.3",
+    "sonata-project/datagrid-bundle": "2.2.*@dev" 
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Th3Mouk\\CMSPageBundle\\": "" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
