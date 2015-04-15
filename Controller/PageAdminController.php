@@ -14,7 +14,7 @@ namespace Th3Mouk\CMSPageBundle\Controller;
 use Sonata\PageBundle\Controller\PageAdminController as BasePageAdminController;
 
 /**
- * Page Admin Controller
+ * Page Admin Controller.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */

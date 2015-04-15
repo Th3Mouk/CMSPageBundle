@@ -16,7 +16,7 @@ use Sonata\PageBundle\Model\PageInterface;
 use Sonata\PageBundle\Model\SiteInterface;
 
 /**
- * This class manages PageInterface persistency with the Doctrine ORM
+ * This class manages PageInterface persistency with the Doctrine ORM.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
@@ -47,9 +47,10 @@ class PageManager extends BasePageManager
     }
 
     /**
-     * Si on est admin alors on a accès à tout
+     * Si on est admin alors on a accès à tout.
      *
-     * @param  SiteInterface $site
+     * @param SiteInterface $site
+     *
      * @return mixed
      */
     public function loadPagesAdmin(SiteInterface $site)

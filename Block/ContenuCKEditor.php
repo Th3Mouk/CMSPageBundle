@@ -1,7 +1,8 @@
 <?php
+
 /**
  * Created by PhpStorm.
- * User: Jeremy
+ * User: Jeremy.
  */
 
 namespace Th3Mouk\CMSPageBundle\Block;
@@ -18,8 +19,6 @@ class ContenuCKEditor extends BaseBlockService
     /**
      * @param FormMapper     $form
      * @param BlockInterface $block
-     *
-     * @return void
      */
     public function buildEditForm(FormMapper $form, BlockInterface $block)
     {

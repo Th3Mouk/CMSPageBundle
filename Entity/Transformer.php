@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata project.
  *
@@ -15,9 +16,7 @@ use Sonata\PageBundle\Model\PageInterface;
 use Sonata\PageBundle\Model\SnapshotInterface;
 
 /**
- * This class transform a SnapshotInterface into PageInterface
- *
- * @package Sonata\PageBundle\Entity
+ * This class transform a SnapshotInterface into PageInterface.
  */
 class Transformer extends BaseTransformer
 {
