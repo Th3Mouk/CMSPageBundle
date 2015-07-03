@@ -15,7 +15,7 @@ The use of this bundle require understanding of the [SonataPageBundle](https://s
 ### Composer
 
 ``` json
-composer require th3mouk/cms-page-bundle ~1.0
+composer require th3mouk/cms-page-bundle ~1.1
 ```
 
 ### SonataPageBundle
