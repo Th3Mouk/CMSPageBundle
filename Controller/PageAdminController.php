@@ -57,12 +57,12 @@ class PageAdminController extends BasePageAdminController
         $this->get('twig')->getExtension('form')->renderer->setTheme($formView, $this->admin->getFilterTheme());
 
         return $this->render('SonataPageBundle:PageAdmin:tree.html.twig', array(
-            'action'      => 'tree',
-            'sites'       => $sites,
+            'action' => 'tree',
+            'sites' => $sites,
             'currentSite' => $currentSite,
-            'pages'       => $pages,
-            'form'        => $formView,
-            'csrf_token'  => $this->getCsrfToken('sonata.batch'),
+            'pages' => $pages,
+            'form' => $formView,
+            'csrf_token' => $this->getCsrfToken('sonata.batch'),
         ));
     }
 }

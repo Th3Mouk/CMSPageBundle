@@ -12,7 +12,6 @@
 namespace Th3Mouk\CMSPageBundle\Entity;
 
 use Sonata\PageBundle\Entity\PageManager as BasePageManager;
-use Sonata\PageBundle\Model\PageInterface;
 use Sonata\PageBundle\Model\SiteInterface;
 
 /**

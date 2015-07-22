@@ -6,7 +6,6 @@
  * Date: 30/01/15
  * Time: 15:47.
  */
-
 namespace Th3Mouk\CMSPageBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;

@@ -4,7 +4,6 @@
  * Created by PhpStorm.
  * User: Jeremy.
  */
-
 namespace Th3Mouk\CMSPageBundle\Block;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -46,7 +45,7 @@ class ContenuCKEditor extends BaseBlockService
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'contenu'   => null,
+            'contenu' => null,
             'template' => 'Th3MoukCMSPageBundle:Block:contenu_ckeditor.html.twig',
         ));
     }

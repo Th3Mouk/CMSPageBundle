@@ -51,23 +51,23 @@ class Transformer extends BaseTransformer
             $snapshot->setTargetId($page->getTarget()->getId());
         }
 
-        $content                     = array();
-        $content['id']               = $page->getId();
-        $content['name']             = $page->getName();
-        $content['javascript']       = $page->getJavascript();
-        $content['stylesheet']       = $page->getStylesheet();
-        $content['raw_headers']      = $page->getRawHeaders();
-        $content['title']            = $page->getTitle();
+        $content = array();
+        $content['id'] = $page->getId();
+        $content['name'] = $page->getName();
+        $content['javascript'] = $page->getJavascript();
+        $content['stylesheet'] = $page->getStylesheet();
+        $content['raw_headers'] = $page->getRawHeaders();
+        $content['title'] = $page->getTitle();
         $content['meta_description'] = $page->getMetaDescription();
-        $content['meta_keyword']     = $page->getMetaKeyword();
-        $content['template_code']    = $page->getTemplateCode();
-        $content['request_method']   = $page->getRequestMethod();
-        $content['created_at']       = $page->getCreatedAt()->format('U');
-        $content['updated_at']       = $page->getUpdatedAt()->format('U');
-        $content['slug']             = $page->getSlug();
-        $content['parent_id']        = $page->getParent() ? $page->getParent()->getId() : null;
-        $content['target_id']        = $page->getTarget() ? $page->getTarget()->getId() : null;
-        $content['showRouteAdmin']   = $page->getShowRouteAdmin();
+        $content['meta_keyword'] = $page->getMetaKeyword();
+        $content['template_code'] = $page->getTemplateCode();
+        $content['request_method'] = $page->getRequestMethod();
+        $content['created_at'] = $page->getCreatedAt()->format('U');
+        $content['updated_at'] = $page->getUpdatedAt()->format('U');
+        $content['slug'] = $page->getSlug();
+        $content['parent_id'] = $page->getParent() ? $page->getParent()->getId() : null;
+        $content['target_id'] = $page->getTarget() ? $page->getTarget()->getId() : null;
+        $content['showRouteAdmin'] = $page->getShowRouteAdmin();
 
         $content['blocks'] = array();
         foreach ($page->getBlocks() as $block) {
