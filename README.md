@@ -15,7 +15,7 @@ The use of this bundle require understanding of the [SonataPageBundle](https://s
 ### Composer
 
 ``` json
-composer require th3mouk/cms-page-bundle ~1.1
+composer require th3mouk/cms-page-bundle ^1.1.0
 ```
 
 ### SonataPageBundle
@@ -75,3 +75,7 @@ imports:
     # Override Vendors Parameters
     - { resource: bundles/override.yml }
 ```
+
+## Please
+
+Feel free to improve all of this work, project or bundles.
