@@ -41,12 +41,10 @@ class PageAdminController extends BasePageAdminController
             $currentSite = $sites[0];
         }
 
+        $showAllPages = $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN');
+
         if ($currentSite) {
-            if ($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
-                $pages = $pageManager->loadPagesAdmin($currentSite);
-            } else {
-                $pages = $pageManager->loadPages($currentSite);
-            }
+            $pages = $pageManager->loadPages($currentSite, $showAllPages);
         } else {
             $pages = array();
         }

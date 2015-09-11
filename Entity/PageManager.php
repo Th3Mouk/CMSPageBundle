@@ -24,39 +24,21 @@ class PageManager extends BasePageManager
     /**
      * {@inheritdoc}
      */
-    public function loadPages(SiteInterface $site)
+    public function loadPages(SiteInterface $site, $showAllPages = false)
     {
-        $pages = $this->getEntityManager()
-            ->createQuery(sprintf('SELECT p FROM %s p INDEX BY p.id WHERE p.site = %d AND p.showRouteAdmin = 1 ORDER BY p.position ASC', $this->class, $site->getId()))
-            ->execute();
+        $qb = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('p')
+            ->from($this->getClass(), 'p', 'p.id')
+            ->andwhere('p.site = :site')
+            ->addOrderBy('p.position', 'ASC')
+            ->setParameter('site', $site->getId());
 
-        foreach ($pages as $page) {
-            $parent = $page->getParent();
-
-            $page->disableChildrenLazyLoading();
-            if (!$parent) {
-                continue;
-            }
-
-            $pages[$parent->getId()]->disableChildrenLazyLoading();
-            $pages[$parent->getId()]->addChildren($page);
+        if (!$showAllPages) {
+            $qb->andWhere('p.showRouteAdmin = 1');
         }
 
-        return $pages;
-    }
-
-    /**
-     * Si on est admin alors on a accès à tout.
-     *
-     * @param SiteInterface $site
-     *
-     * @return mixed
-     */
-    public function loadPagesAdmin(SiteInterface $site)
-    {
-        $pages = $this->getEntityManager()
-            ->createQuery(sprintf('SELECT p FROM %s p INDEX BY p.id WHERE p.site = %d ORDER BY p.position ASC', $this->class, $site->getId()))
-            ->execute();
+        $pages = $qb->getQuery()->getResult();
 
         foreach ($pages as $page) {
             $parent = $page->getParent();
