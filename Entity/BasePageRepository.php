@@ -19,8 +19,12 @@ class BasePageRepository extends EntityRepository
             ->set('p.showRouteAdmin', '0')
             ->where('p.routeName LIKE \'sonata_%\'')
             ->orwhere('p.routeName LIKE \'fos_%\'')
-            ->orwhere('p.routeName LIKE \'liip_%\'')
-            ->orWhere('p.routeName LIKE \'app_%\'');
+            ->orwhere('p.routeName LIKE \'liip_%\'');
+
+        $home = $query->expr()->andX('p.routeName LIKE \'app_%\'', 'p.routeName NOT LIKE \'app_home%\'');
+
+        $query
+            ->orWhere($home);
 
         $query->getQuery()->execute();
     }
