@@ -3,7 +3,7 @@
   "type": "symfony-bundle",
   "description": "Symfony CMSPageBundle extends of Sonata Project",
   "keywords": [
-    "sonata", "cms", "page"
+    "sonata", "cms", "page", "content", "symfony", "bundle"
   ],
   "license": "MIT",
   "authors": [
