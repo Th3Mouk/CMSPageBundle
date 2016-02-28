@@ -1,17 +1,20 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Jeremy.
+/*
+ * (c) Jérémy Marodon <marodon.jeremy@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
+
 namespace Th3Mouk\CMSPageBundle\Block;
 
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\BlockBundle\Block\BaseBlockService;
+use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\BaseBlockService;
 
 class ContenuCKEditor extends BaseBlockService
 {
@@ -34,7 +37,7 @@ class ContenuCKEditor extends BaseBlockService
         $settings = $blockContext->getSettings();
 
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'block' => $blockContext->getBlock(),
+            'block'    => $blockContext->getBlock(),
             'settings' => $settings,
         ), $response);
     }
@@ -45,7 +48,7 @@ class ContenuCKEditor extends BaseBlockService
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'contenu' => null,
+            'contenu'  => null,
             'template' => 'Th3MoukCMSPageBundle:Block:contenu_ckeditor.html.twig',
         ));
     }

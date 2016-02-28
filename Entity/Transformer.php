@@ -1,9 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Jérémy Marodon <marodon.jeremy@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,9 +13,6 @@ use Sonata\PageBundle\Entity\Transformer as BaseTransformer;
 use Sonata\PageBundle\Model\PageInterface;
 use Sonata\PageBundle\Model\SnapshotInterface;
 
-/**
- * This class transform a SnapshotInterface into PageInterface.
- */
 class Transformer extends BaseTransformer
 {
     /**

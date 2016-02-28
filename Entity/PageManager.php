@@ -1,9 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Jérémy Marodon <marodon.jeremy@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,11 +12,6 @@ namespace Th3Mouk\CMSPageBundle\Entity;
 use Sonata\PageBundle\Entity\PageManager as BasePageManager;
 use Sonata\PageBundle\Model\SiteInterface;
 
-/**
- * This class manages PageInterface persistency with the Doctrine ORM.
- *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
- */
 class PageManager extends BasePageManager
 {
     /**

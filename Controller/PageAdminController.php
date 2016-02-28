@@ -1,9 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Jérémy Marodon <marodon.jeremy@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -55,12 +53,12 @@ class PageAdminController extends BasePageAdminController
         $this->get('twig')->getExtension('form')->renderer->setTheme($formView, $this->admin->getFilterTheme());
 
         return $this->render('SonataPageBundle:PageAdmin:tree.html.twig', array(
-            'action' => 'tree',
-            'sites' => $sites,
+            'action'      => 'tree',
+            'sites'       => $sites,
             'currentSite' => $currentSite,
-            'pages' => $pages,
-            'form' => $formView,
-            'csrf_token' => $this->getCsrfToken('sonata.batch'),
+            'pages'       => $pages,
+            'form'        => $formView,
+            'csrf_token'  => $this->getCsrfToken('sonata.batch'),
         ));
     }
 }
