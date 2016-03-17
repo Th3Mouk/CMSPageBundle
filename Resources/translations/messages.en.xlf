@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="cms.block.ckeditor">
                 <source>cms.block.ckeditor</source>
-                <target>Bloc de contenu CKEditor</target>
+                <target>Content block CKEditor</target>
             </trans-unit>
         </body>
     </file>

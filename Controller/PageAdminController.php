@@ -10,6 +10,7 @@
 namespace Th3Mouk\CMSPageBundle\Controller;
 
 use Sonata\PageBundle\Controller\PageAdminController as BasePageAdminController;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Page Admin Controller.
@@ -19,15 +20,19 @@ use Sonata\PageBundle\Controller\PageAdminController as BasePageAdminController;
 class PageAdminController extends BasePageAdminController
 {
     /**
+     * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function treeAction()
+    public function treeAction(Request $request = null)
     {
+        $this->admin->checkAccess('tree');
+
         $sites = $this->get('sonata.page.manager.site')->findBy(array());
         $pageManager = $this->get('sonata.page.manager.page');
 
         $currentSite = null;
-        $siteId = $this->getRequest()->get('site');
+        $siteId = $request->get('site');
         foreach ($sites as $site) {
             if ($siteId && $site->getId() == $siteId) {
                 $currentSite = $site;
@@ -52,7 +57,7 @@ class PageAdminController extends BasePageAdminController
 
         $this->get('twig')->getExtension('form')->renderer->setTheme($formView, $this->admin->getFilterTheme());
 
-        return $this->render('SonataPageBundle:PageAdmin:tree.html.twig', array(
+        return $this->render($this->admin->getTemplate('tree'), array(
             'action'      => 'tree',
             'sites'       => $sites,
             'currentSite' => $currentSite,

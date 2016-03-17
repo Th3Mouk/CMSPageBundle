@@ -9,116 +9,19 @@ file that was distributed with this source code.
 
 #}
 
-{% extends 'SonataAdminBundle:CRUD:action.html.twig' %}
-
-{% block tab_menu %}
-    {{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}
-{% endblock %}
-
-{% block body_attributes %}class="sonata-bc skin-black fixed page-composer-page sonata-ba-no-side-menu"{% endblock %}
+{% extends '@SonataPage/PageAdmin/compose.html.twig' %}
 
 {% block content %}
-    <div class="page-composer">
-        <h2>{{ 'page.compose_page'|trans({}, 'SonataPageBundle') }} "{{ page.name }}" <small>[template: <b>{{ template.name }}</b>]</small></h2>
-
-        {% if containers|length == 0 %}
-            {% include 'SonataPageBundle:PageAdmin:compose_hint.html.twig' %}
-        {% else %}
-            <div class="row row-fluid">
-                <div class="col-md-4 span4">
-                    <div class="page-composer__page-preview">
-                        <div class="page-composer__page-preview__containers">
-                            {% for container in containers %}
-                                {% if container.block is defined and container.block %}
-                                    <a class="page-composer__page-preview__container block-preview-{{ container.block.id }}"
-                                       data-block-id="{{ container.block.id }}"
-                                       style="top:{{ container.area.placement.y }}%;right:{{ container.area.placement.right }}%;bottom:{{ container.area.placement.bottom }}%;left:{{ container.area.placement.x }}%"
-                                       href="{{ admin.generateUrl('compose_container_show', { 'id': container.block.id }) }}"
-                                    >
-                                        <div class="page-composer__page-preview__container__content">
-                                            <strong>{{ container.block.name|default(container.area.name) }}</strong><br>
-                                            <small><span class="child-count">{{ container.block.children|length }}</span> blocks</small>
-                                            <span class="page-composer__page-preview__add-block">
-                                                <i class="fa fa-circle-o"></i>
-                                                <i class="fa fa-dot-circle-o"></i>
-                                            </span>
-                                            <span class="drop-indicator">
-                                                <span class="fa fa-download"></span>
-                                            </span>
-                                        </div>
-                                    </a>
-                                {% else %}
-                                    <div class="page-composer__page-preview__container--no-block"
-                                         style="top:{{ container.area.placement.y }}%;right:{{ container.area.placement.right }}%;bottom:{{ container.area.placement.bottom }}%;left:{{ container.area.placement.x }}%"
-                                    >
-                                        <div class="page-composer__page-preview__container__content">
-                                            <strong>{{ container.area.name }}</strong>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    {% if orphanContainers|length > 0 %}
-                        <div class="page-composer__orphan-containers">
-                            <h3 class="page-composer__orphan-containers__header">{{ 'page.orphan_containers'|trans({}, 'SonataPageBundle') }}</h3>
-                            <ul>
-                                {% for orphanContainer in orphanContainers %}
-                                    <li class="page-composer__orphan-container block-preview-{{ orphanContainer.id }}"
-                                        data-block-id="{{ orphanContainer.id }}"
-                                        href="{{ admin.generateUrl('compose_container_show', { 'id': orphanContainer.id }) }}"
-                                    >
-                                        <strong>{{ orphanContainer.name|default(orphanContainer.type) }}</strong><br>
-                                        <small><span class="child-count">{{ orphanContainer.children|length }}</span> blocks</small>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="col-md-8 span8">
-                    <div class="page-composer__dyn-content">
-                    </div>
-                </div>
-            </div>
-            <script>
-                $(document).ready(function () {
-                    var composer = new PageComposer({{ page.id }}, {
-                        translations: {
-                            cancel: "{{ 'cancel'|trans({}, 'SonataPageBundle') }}"
-                        },
-                        routes: {
-                            save_blocks_positions: "{{ admin_pool.getAdminByAdminCode('sonata.page.admin.block').generateUrl('savePosition', { 'id': page.id }) }}",
-                            block_switch_parent:   "{{ admin_pool.getAdminByAdminCode('sonata.page.admin.block').generateUrl('switchParent') }}",
-                            block_preview:         "{{ admin_pool.getAdminByAdminCode('sonata.page.admin.block').generateUrl('composePreview', { 'block_id': 'BLOCK_ID' }) }}"
-                        }
-                    });
-                    composer.csrfTokens = {{ csrfTokens|json_encode()|raw }};
-
-                    window.SonataPageComposer = composer;
-
-//                  Ceci est une modif perso pour CKEditor qui ne se met pas à jour ----------------
-                    function bindCK(event) {
-                        $('.page-composer__container__child__content button[type="submit"]').on('click', function(){
-                            updateCK(event);
-                        });
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function() {
+            $('.page-composer').on('click', '.page-composer__container__child__content button[type="submit"]',
+                function(){
+                    for(name in CKEDITOR.instances) {
+                        CKEDITOR.instances[name].updateElement();
                     }
-
-                    function updateCK(event) {
-                        for(name in CKEDITOR.instances) {
-                            CKEDITOR.instances[name].updateElement();
-                        }
-                    }
-
-                    $(composer).on('blockcreateformloaded', bindCK);
-                    $(composer).on('blockeditformloaded', bindCK);
-                    $(composer).on('blockcreated', bindCK);
-//                  Fin de la modif -----------------------
-                });
-            </script>
-        {% endif %}
-    </div>
-
-
+                }
+            );
+        });
+    </script>
 {% endblock %}

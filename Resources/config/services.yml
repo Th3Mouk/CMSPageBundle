@@ -1,6 +1,10 @@
 services:
-    cms.block.contenu.ckeditor:
-        class: Th3Mouk\CMSPageBundle\Block\ContenuCKEditor
-        arguments: ['Bloc Contenu CKEditor', @templating]
+    cms.block.ckeditor:
+        class: Th3Mouk\CMSPageBundle\Block\CKEditorBlockService
+        arguments: ['cms.block.ckeditor', "@templating"]
         tags:
             - { name: sonata.block }
+
+    cms.block.migrate:
+        class: Th3Mouk\CMSPageBundle\Migration\BlocksMigration
+        arguments: ['@sonata.page.manager.block']
