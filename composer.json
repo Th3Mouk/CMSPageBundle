@@ -13,6 +13,7 @@
         }
     ],
     "require": {
+        "php": "^5.3.9|^7.0",
         "sonata-project/page-bundle": "^3.0"
     },
     "minimum-stability": "dev",
