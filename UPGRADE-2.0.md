@@ -5,7 +5,7 @@ UPGRADE 2.0
 
 ### SonataAdminBundle
 
-Now supporting the 2.4 version of the bundles
+Now supporting the 3.x version of the bundles
 
 ### Upgrade this bundle from 1.x
 

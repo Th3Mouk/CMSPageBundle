@@ -14,7 +14,7 @@ The use of this bundle require understanding of the [SonataPageBundle](https://s
 
 ### Composer
 
-``` json
+```sh
 composer require th3mouk/cms-page-bundle ^2.0
 ```
 
@@ -24,13 +24,13 @@ Install the original [SonataPageBundle](https://sonata-project.org/bundles/page/
 
 ### Easy extends
 
-``` bash
+```sh
 app/console sonata:easy-extends:generate Th3MoukCMSPageBundle
 ```
 
 ### Update Kernel
 
-``` php
+```php
 # app/AppKernel.php
 ...
 new Th3Mouk\CMSPageBundle\Th3MoukCMSPageBundle(),
@@ -42,7 +42,7 @@ new Application\Th3Mouk\CMSPageBundle\ApplicationTh3MoukCMSPageBundle(),
 
 Create the following files:
 
-``` yml
+```yaml
 # app/config/bundles/override.yml
 parameters:
     #Surcharge PageAdmin
@@ -55,7 +55,7 @@ parameters:
     sonata.page.admin.page.controller: Th3MoukCMSPageBundle:PageAdmin
 ```
 
-``` yml
+```yaml
 # app/config/sonata/sonata_page.yml
 sonata_page:
     class:
@@ -66,7 +66,7 @@ sonata_page:
 ```
 Include them:
 
-``` yml
+```yaml
 # app/config/config.yml
 imports:
     # Sonata Page Bundle
