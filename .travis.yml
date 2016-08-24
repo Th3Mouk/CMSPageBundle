@@ -1,9 +1,5 @@
 language: php
 
-php:
-  - hhvm
-  - nightly
-
 sudo: false
 
 cache:
@@ -21,26 +17,32 @@ matrix:
       env: CS_FIXER=run
     - php: 5.3
       env: COMPOSER_FLAGS="--prefer-lowest"
-    - php: 5.6
+    - php: 7.0
       env: SYMFONY_VERSION=2.3.*
-    - php: 5.6
+    - php: 7.0
       env: SYMFONY_VERSION=2.7.*
-    - php: 5.6
-      env: SYMFONY_VERSION=2.8.*
     - php: 5.5
+      env: SYMFONY_VERSION=2.8.*
+    - php: 5.6
       env: SYMFONY_VERSION=2.8.*
     - php: 7.0
       env: SYMFONY_VERSION=2.8.*
-    - php: 5.6
+    - php: nightly
+      env: SYMFONY_VERSION=2.8.*
+    - php: 7.0
       env: SYMFONY_VERSION=3.0.*
+    - php: 7.0
+      env: SYMFONY_VERSION=3.1.*
 
   allow_failures:
-    - php: hhvm
     - php: nightly
     - env: SYMFONY_VERSION=3.0.*
+    - env: SYMFONY_VERSION=3.1.*
+
+before_install:
+  - (phpenv config-rm xdebug.ini || exit 0)
 
 before_script:
-  - (phpenv config-rm xdebug.ini || exit 0)
   - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d && echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - composer selfupdate
   - composer config -q github-oauth.github.com $GITHUB_OAUTH_TOKEN
