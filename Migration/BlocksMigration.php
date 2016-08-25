@@ -29,18 +29,6 @@ class BlocksMigration
     }
 
     /**
-     * Return all ckeditor legacy blocks.
-     *
-     * @return array
-     */
-    protected function getLegacyCkeditorBlocks()
-    {
-        return $this->blockManager->findBy(array(
-            'type' => 'cms.block.contenu.ckeditor',
-        ));
-    }
-
-    /**
      * Function of migration of included blocks.
      */
     public function migrateCkeditorBlocks()
@@ -77,5 +65,17 @@ class BlocksMigration
     public function setBlockManager($blockManager)
     {
         $this->blockManager = $blockManager;
+    }
+
+    /**
+     * Return all ckeditor legacy blocks.
+     *
+     * @return array
+     */
+    protected function getLegacyCkeditorBlocks()
+    {
+        return $this->blockManager->findBy(array(
+            'type' => 'cms.block.contenu.ckeditor',
+        ));
     }
 }
