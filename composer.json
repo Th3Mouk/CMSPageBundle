@@ -17,7 +17,7 @@
         "sonata-project/page-bundle": "^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.4.3",
+        "phpunit/phpunit": "@stable",
         "sllh/php-cs-fixer-styleci-bridge": "^2.1"
     },
     "autoload": {
