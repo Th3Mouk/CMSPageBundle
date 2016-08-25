@@ -40,7 +40,7 @@ class CKEditorBlockService extends BaseBlockService
         $settings = $blockContext->getSettings();
 
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'block'    => $blockContext->getBlock(),
+            'block' => $blockContext->getBlock(),
             'settings' => $settings,
         ), $response);
     }
@@ -51,7 +51,7 @@ class CKEditorBlockService extends BaseBlockService
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'content'  => null,
+            'content' => null,
             'template' => 'Th3MoukCMSPageBundle:Block:contenu_ckeditor.html.twig',
         ));
     }
