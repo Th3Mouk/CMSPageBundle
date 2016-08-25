@@ -15,6 +15,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class HideAdminPagesCommand extends ContainerAwareCommand
 {
+    public function getEntityManager()
+    {
+        return $this->getContainer()->get('doctrine')->getManager();
+    }
+
     protected function configure()
     {
         $this
@@ -30,10 +35,5 @@ class HideAdminPagesCommand extends ContainerAwareCommand
         $em->getRepository('ApplicationTh3MoukCMSPageBundle:Page')->pagesToHide();
 
         $output->writeln('OK');
-    }
-
-    public function getEntityManager()
-    {
-        return $this->getContainer()->get('doctrine')->getManager();
     }
 }
