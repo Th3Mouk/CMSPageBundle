@@ -5,10 +5,11 @@ Bundle extending [SonataPageBundle](https://github.com/sonata-project/SonataPage
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/e11f072f-d128-459c-8100-e50bf565e99a/mini.png)](https://insight.sensiolabs.com/projects/e11f072f-d128-459c-8100-e50bf565e99a) [![Latest Stable Version](https://poser.pugx.org/th3mouk/cms-page-bundle/v/stable.svg)](https://packagist.org/packages/th3mouk/cms-page-bundle) [![Total Downloads](https://poser.pugx.org/th3mouk/cms-page-bundle/downloads.svg)](https://packagist.org/packages/th3mouk/cms-page-bundle) [![Build Status](https://travis-ci.org/Th3Mouk/CMSPageBundle.svg?branch=master)](https://travis-ci.org/Th3Mouk/CMSPageBundle) [![Latest Unstable Version](https://poser.pugx.org/th3mouk/cms-page-bundle/v/unstable.svg)](https://packagist.org/packages/th3mouk/cms-page-bundle) [![License](https://poser.pugx.org/th3mouk/cms-page-bundle/license.svg)](https://packagist.org/packages/th3mouk/cms-page-bundle)
 
+This bundle is part of the preconfigured CMS based on Symfony and Sonata : [CMSStarter](https://github.com/Th3Mouk/CMSStarter) | [CMSCoreBundle](https://github.com/Th3Mouk/CMSCoreBundle)
+
 ## SonataPageBundle
 
 The use of this bundle require understanding of the [SonataPageBundle](https://sonata-project.org/bundles/page/master/doc/index.html).
-
 
 ## Installation
 
@@ -45,13 +46,13 @@ Create the following files:
 ```yaml
 # app/config/bundles/override.yml
 parameters:
-    #Surcharge PageAdmin
+    #Overload PageAdmin
     sonata.page.admin.page.class: Th3Mouk\CMSPageBundle\Admin\PageAdmin
-    #Surcharge PageManager
+    #Overload PageManager
     sonata.page.manager.page.class: Th3Mouk\CMSPageBundle\Entity\PageManager
-    #Surcharge Transformer car sinon les attributs additionnel non serialisés
+    #Overload Transformer otherwise additional attributes will be non-serialized
     sonata.page.transformer.class: Th3Mouk\CMSPageBundle\Entity\Transformer
-    #Surcharge PageAdminController
+    #Overload PageAdminController
     sonata.page.admin.page.controller: Th3MoukCMSPageBundle:PageAdmin
 ```
 
